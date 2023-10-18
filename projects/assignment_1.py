@@ -62,11 +62,33 @@ task_id_counter = 1
 
 def add_task():
     # TODO: Implement task addition logic
-    pass
+    global task_id_counter
+    title = input("Enter the task title: ")
+    description = input("Enter task description: ")
+    due_date = input("Enter due date of task: ")
+
+    task = {
+        "id": task_id_counter,
+        "title": title,
+        "description": description,
+        "due date": due_date,
+    }
+    tasks.append(task)
+    task_id_counter += 1
+    print("Task added successfully")
 
 def view_tasks():
     # TODO: Implement task viewing logic
-    pass
+    if not tasks:
+        print("No tasks available. Add a task")
+        return
+    print("Available Tasks")
+    for task in tasks:
+       print(f"Task ID: {task['id']}") 
+       print(f"Title: {task['title']}")
+       print(f"Description: {task['description']}")
+       print(f"Due Date: {task['due date']}")
+       print()
 
 def edit_task():
     # TODO: Implement task editing logic
