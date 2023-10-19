@@ -92,11 +92,42 @@ def view_tasks():
 
 def edit_task():
     # TODO: Implement task editing logic
-    pass
+    view_tasks()
+    task_id = int(input("Enter the task ID you want to edit: "))
+    found = False
+
+    for task in tasks:
+        if task['id'] == task_id:
+            found = True
+            title = input("Enter updated task title (press Enter to keep the same): ")
+            description = input("Enter updated task description (press Enter to keep the same): ")
+            due_date = input("Enter updated due date (press Enter to keep the same): ")
+
+            # Update task details
+            task['title'] = title if title else task['title']
+            task['description'] = description if description else task['description']
+            task['due_date'] = due_date if due_date else task['due_date']
+            print("Task updated successfully.")
+            break
+
+    if not found:
+        print("Task not found. Please enter a valid task ID.")
 
 def delete_task():
     # TODO: Implement task deletion logic
-    pass
+    view_tasks()
+    task_id = int(input("Enter the task ID you want to delete: "))
+    found = False
+
+    for task in tasks:
+        if task['id'] == task_id:
+            found = True
+            tasks.remove(task)
+            print("Task deleted successfully.")
+            break
+
+    if not found:
+        print("Task not found. Please enter a valid task ID.")
 
 def main():
     while True:
